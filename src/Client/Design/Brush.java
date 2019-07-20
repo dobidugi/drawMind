@@ -14,7 +14,6 @@ class Brush extends JLabel {
 
 	@Override
 	public void paint(Graphics g) {
-		System.out.print("d");
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setBackground(Color.BLACK);
 		g2.setColor(color);
