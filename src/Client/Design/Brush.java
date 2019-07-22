@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JLabel;
 
-class Brush extends JLabel {
+public class Brush extends JLabel {
 
 	private int x;
 	private int y;
