@@ -20,7 +20,7 @@ public class Controller {
 	public void start() {
 		if(ip!=null && port!=0) {
 			connectServer();
-			makeThread();
+			//	makeThread();
 		}
 	}
 	
@@ -57,5 +57,6 @@ public class Controller {
 	
 	public void setImgbuff(BufferedImage imgbuff) {
 		this.imgbuff = imgbuff;
+		makeThread();
 	}
 }

@@ -47,6 +47,7 @@ public class ReceiveMessage extends Thread {
 					pars = pars[1].split(",");
 					x = Integer.parseInt(pars[0]);
 					y = Integer.parseInt(pars[1]);
+					if(brush==null) System.out.print("null");
 					brush.setX(x);
 					brush.setY(y);
 					brush.repaint();

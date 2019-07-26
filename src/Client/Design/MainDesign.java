@@ -160,7 +160,7 @@ public class MainDesign {
 	}
 	
 	public Brush getBrush() {
-		return brush;
+		return this.brush;
 	}
 	
 	public BufferedImage getImgbuff() {
