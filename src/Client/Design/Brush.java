@@ -12,14 +12,20 @@ public class Brush extends JLabel {
 
 	private int x;
 	private int y;
+	public boolean flag = false;
 	public Color color = Color.black;
 
 	@Override
 	public void paint(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		g2.setBackground(Color.BLACK);
-		g2.setColor(color);
-		g2.fillOval(x - 10, y - 10, 10, 20);
+		if(flag==true) {
+			g.setColor(color);
+			g.fillOval(x - 10, y - 10, 10, 20);
+		}
+		else if(flag==false) {
+			g.setColor(Color.WHITE);
+			g.fillRect(0, 0, 1000, 1000);
+			flag = true;
+		}
 	}
 	
 	public void setX(int x) {
@@ -32,5 +38,9 @@ public class Brush extends JLabel {
 	
 	public void setColor(Color color) {
 		this.color = color;
+	}
+	
+	public void setFlag(boolean flag) {
+		this.flag = flag;
 	}
 }

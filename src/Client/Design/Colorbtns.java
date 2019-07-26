@@ -6,7 +6,6 @@ import Client.Design.Buttons.Bluebtn;
 import Client.Design.Buttons.Greenbtn;
 import Client.Design.Buttons.Yellowbtn;
 import Client.Design.Buttons.Eraserbtn;
-import Client.Design.Buttons.Clearbtn;
 import Client.Design.Brush;
 
 public class Colorbtns {
@@ -18,7 +17,6 @@ public class Colorbtns {
 	private Greenbtn greenbtn;
 	private Yellowbtn yellowbtn;
 	private Eraserbtn eraserbtn;
-	private Clearbtn clearbtn;
 	
 	public void makeButtons() {
 		makeBlackButton();

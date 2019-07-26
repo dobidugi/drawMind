@@ -27,7 +27,7 @@ public class ServerThread extends Thread {
 		try {
 			userin = new BufferedReader(new InputStreamReader(Client.getInputStream()));
 		}	catch (IOException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 	
@@ -35,7 +35,10 @@ public class ServerThread extends Thread {
 		while(true) {
 			try {
 				msg = userin.readLine();
-				System.out.println(msg);
+				if(msg==null) {
+					Client.close();
+					break;
+				}
 				allUserSendMsg();
 			} catch (IOException e) {
 				e.printStackTrace();

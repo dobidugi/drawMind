@@ -4,6 +4,7 @@ import Client.Design.Brush;
 
 import java.net.Socket;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import java.io.BufferedReader;
@@ -47,16 +48,33 @@ public class ReceiveMessage extends Thread {
 					pars = pars[1].split(",");
 					x = Integer.parseInt(pars[0]);
 					y = Integer.parseInt(pars[1]);
-					if(brush==null) System.out.print("null");
 					brush.setX(x);
 					brush.setY(y);
 					brush.repaint();
 					brush.printAll(imgbuff.getGraphics());
 				}
+				else if(pars[0].equals("Color")) {
+					if(pars[1].equals("BLACK")) brush.setColor(Color.BLACK);
+					else if(pars[1].equals("BLUE")) brush.setColor(Color.BLUE);
+					else if(pars[1].equals("RED")) brush.setColor(Color.RED);
+					else if(pars[1].equals("GREEN")) brush.setColor(Color.GREEN);
+					else if(pars[1].equals("YELLOW")) brush.setColor(Color.YELLOW);
+					else if(pars[1].equals("WHITE")) brush.setColor(Color.WHITE);
+				}
+				else if(pars[0].equals("MODE")) {
+					if(pars[1].equals("CLEAR")) ClearScreen();
+				}
+				
 			} catch(IOException e) {
 				
 			}
 		}
+	}
+	
+	private void ClearScreen() {
+		brush.setFlag(false);
+		brush.repaint();
+		brush.printAll(imgbuff.getGraphics());
 	}
 	
 	public void setBrush(Brush brush) {

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import Client.Core.DrawSocket.SendMessage;
 import Client.Design.Brush;
 
 public class Yellowbtn extends JButton {
@@ -19,7 +20,8 @@ public class Yellowbtn extends JButton {
 	private void makeEvent() {
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("YELLOW");
+				SendMessage.send.println("Color:YELLOW");
+				SendMessage.send.flush();
 				brush.setColor(Color.YELLOW);
 			}
 		});

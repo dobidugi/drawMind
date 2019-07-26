@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import Client.Core.DrawSocket.SendMessage;
 import Client.Design.Brush;
 
 public class Eraserbtn extends JButton {
@@ -20,7 +21,8 @@ public class Eraserbtn extends JButton {
 	private void makeEvent() {
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("WHITE");
+				SendMessage.send.println("Color:WHITE");
+				SendMessage.send.flush();
 				brush.setColor(Color.WHITE);
 			}
 		});

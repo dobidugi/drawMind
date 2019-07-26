@@ -2,6 +2,7 @@ package Client.Design;
 
 import java.awt.image.BufferedImage;
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -29,7 +30,6 @@ public class MainDesign {
 	private JFrame frame;
 	private BufferedImage imgbuff;
 	private JLabel imgpanel;
-	private Border imgborder;
 	private Brush brush;
 	private JButton clearbtn;
 	private JList Jlist;
@@ -61,15 +61,16 @@ public class MainDesign {
 	private void drawImgSection() {
 		imgbuff = new BufferedImage(panelWidth, panelHeight, BufferedImage.TYPE_INT_ARGB);
 		imgpanel = new JLabel(new ImageIcon(imgbuff));
-		imgborder = BorderFactory.createLineBorder(Color.BLACK, 3);
 		imgpanel.setBounds(10, 10, panelWidth, panelHeight);
-		imgpanel.setBorder(imgborder);
+		imgpanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
 		frame.add(imgpanel);
 	}
 
 	private void makeBrush() {
 		brush = new Brush();
 		brush.setBounds(10, 10, panelWidth, panelHeight);
+		brush.repaint();
+		brush.printAll(imgbuff.getGraphics());
 		frame.add(brush);
 	}
 
@@ -79,10 +80,6 @@ public class MainDesign {
 			public void mouseDragged(MouseEvent e) {
 				SendMessage.send.println("Position:"+e.getX()+","+e.getY());
 				SendMessage.send.flush();
-				brush.setX(e.getX());
-				brush.setY(e.getY());
-				brush.repaint();
-				brush.paintAll(imgbuff.getGraphics());
 			}
 
 			public void mouseMoved(MouseEvent e) {
@@ -119,12 +116,8 @@ public class MainDesign {
 	private void ClearButtonEvent() {
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.remove(imgpanel);
-				frame.remove(brush);
-				drawImgSection();
-				makeBrush();
-				makeMouseEvent();
-				frame.repaint();
+				SendMessage.send.println("MODE:CLEAR");
+				SendMessage.send.flush();
 			}
 		});
 	}
