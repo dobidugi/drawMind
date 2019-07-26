@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JLabel;
 
+import Client.Core.DrawSocket.SendMessage;
+
 public class Brush extends JLabel {
 
 	private int x;
@@ -18,7 +20,6 @@ public class Brush extends JLabel {
 		g2.setBackground(Color.BLACK);
 		g2.setColor(color);
 		g2.fillOval(x - 10, y - 10, 10, 20);
-
 	}
 	
 	public void setX(int x) {

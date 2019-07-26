@@ -19,6 +19,7 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Client.Core.DrawSocket.SendMessage;
 import Client.Design.Brush;
 import Client.Design.Colorbtns;
 
@@ -36,6 +37,7 @@ public class MainDesign {
 	private JTextArea screen;
 	private JTextField input;
 	private Colorbtns btns;
+	
 	public void makeFrame() {
 		drawFrame();
 		drawImgSection();
@@ -75,10 +77,12 @@ public class MainDesign {
 		imgpanel.addMouseMotionListener(new MouseMotionListener() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
+				SendMessage.send.println("Position:"+e.getX()+","+e.getY());
+				SendMessage.send.flush();
 				brush.setX(e.getX());
 				brush.setY(e.getY());
 				brush.repaint();
-				brush.printAll(imgbuff.getGraphics());
+				brush.paintAll(imgbuff.getGraphics());
 			}
 
 			public void mouseMoved(MouseEvent e) {
@@ -153,5 +157,13 @@ public class MainDesign {
 		Border inputborder = BorderFactory.createLineBorder(Color.BLACK,3);
 		input.setBorder(inputborder);
 		frame.add(input);
+	}
+	
+	public Brush getBrush() {
+		return brush;
+	}
+	
+	public BufferedImage getImgbuff() {
+		return imgbuff;
 	}
 }
