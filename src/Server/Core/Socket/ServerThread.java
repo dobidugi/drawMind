@@ -12,10 +12,11 @@ public class ServerThread extends Thread {
 	private Socket Client;
 	private BufferedReader userin;
 	private String msg;
-	
+	private String ID;
 	public void run() {
 		super.run();
 		makeUserInBuffer();
+		joinchat();
 		waitMsg();
 	}
 	
@@ -35,7 +36,10 @@ public class ServerThread extends Thread {
 		while(true) {
 			try {
 				msg = userin.readLine();
-				System.out.print(msg);
+				String[] pars = msg.split(":");
+				if(pars[0].equals("CHAT")) {
+					msg = "CHAT:"+ "["+ID+"] "+pars[1];
+				}
 				if(msg==null) {
 					Client.close();
 					break;
@@ -47,7 +51,21 @@ public class ServerThread extends Thread {
 		}
 	}
 	
+	private void joinchat() {
+		try {
+			ID = userin.readLine();
+		} catch(IOException e) {
+			
+		}
+		for(int i=0;i<ServerController.List.size();i++){
+			
+			ServerController.List.get(i).println("JOIN:"+ID);
+			ServerController.List.get(i).flush();
+		}
+	}
 	private void allUserSendMsg() {
+		System.out.println(msg);
+		System.out.println(ServerController.List.size());
 		for(int i=0;i<ServerController.List.size();i++){
 			ServerController.List.get(i).println(msg);
 			ServerController.List.get(i).flush();

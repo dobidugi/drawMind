@@ -16,11 +16,12 @@ public class Main {
 			id = init.getID();
 			ip = init.getIP();
 			System.out.println("");
-		}while(id==null && ip==null);
+		}while(id==null || ip==null);
 		Socket.setIP(ip);
 		Socket.setPort(8888);
+		Socket.setId(id);
 		design.makeFrame();
-		Socket.start();
+		Socket.start();		
 		Socket.setScreen(design.getScreen());
 		Socket.setBrush(design.getBrush());
 		Socket.setImgbuff(design.getImgbuff());

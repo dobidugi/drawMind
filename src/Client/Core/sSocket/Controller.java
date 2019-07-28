@@ -19,6 +19,7 @@ public class Controller {
 	private Brush brush;
 	private BufferedImage imgbuff;
 	private JTextArea screen;
+	private String id="test";
 	
 	public void start() {
 		if(ip!=null && port!=0) {
@@ -47,6 +48,7 @@ public class Controller {
 		SendThread = new SendMessage();
 		ReceiveThread = new ReceiveMessage();
 		SendThread.setSocket(Server);
+		SendThread.setId(id);
 		ReceiveThread.setSocket(Server);
 		ReceiveThread.setBrush(brush);
 		ReceiveThread.setScreen(screen);
@@ -55,6 +57,10 @@ public class Controller {
 		ReceiveThread.start();
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public void setScreen(JTextArea screen) {
 		this.screen = screen;
 	}

@@ -66,6 +66,9 @@ public class ReceiveMessage extends Thread {
 				else if(pars[0].equals("CHAT")) {
 					screen.append(pars[1]+"\n");
 				}
+				else if(pars[0].equals("JOIN")) {
+					screen.append(pars[1]+" join the room\n");
+				}
 				else if(pars[0].equals("MODE")) {
 					if(pars[1].equals("CLEAR")) ClearScreen();
 				}
