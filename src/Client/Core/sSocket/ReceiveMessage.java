@@ -1,4 +1,4 @@
-package Client.Core.DrawSocket;
+package Client.Core.sSocket;
 
 import Client.Design.Brush;
 
@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+import javax.swing.JTextArea;
 
 public class ReceiveMessage extends Thread {
 	
@@ -20,6 +21,7 @@ public class ReceiveMessage extends Thread {
 	private Brush brush;
 	private BufferedImage imgbuff;
 	private int x,y;
+	private JTextArea screen;
 	
 	public void run() {
 		super.run();
@@ -61,9 +63,13 @@ public class ReceiveMessage extends Thread {
 					else if(pars[1].equals("YELLOW")) brush.setColor(Color.YELLOW);
 					else if(pars[1].equals("WHITE")) brush.setColor(Color.WHITE);
 				}
+				else if(pars[0].equals("CHAT")) {
+					screen.append(pars[1]+"\n");
+				}
 				else if(pars[0].equals("MODE")) {
 					if(pars[1].equals("CLEAR")) ClearScreen();
 				}
+			
 				
 			} catch(IOException e) {
 				
@@ -83,5 +89,9 @@ public class ReceiveMessage extends Thread {
 	
 	public void setImgbuff(BufferedImage imgbuff) {
 		this.imgbuff = imgbuff;
+	}
+	
+	public void setScreen(JTextArea screen) {
+		this.screen = screen;
 	}
 }

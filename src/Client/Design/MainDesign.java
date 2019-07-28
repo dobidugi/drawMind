@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
@@ -20,12 +22,13 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Client.Core.DrawSocket.SendMessage;
+import Client.Core.sSocket.SendMessage;
 import Client.Design.Brush;
 import Client.Design.Colorbtns;
 
 public class MainDesign {
-	private final int panelWidth = 900;  // 그림판 너비
+
+	private final int panelWidth = 900; // 그림판 너비
 	private final int panelHeight = 700; // 그림판 높이
 	private JFrame frame;
 	private BufferedImage imgbuff;
@@ -37,7 +40,7 @@ public class MainDesign {
 	private JTextArea screen;
 	private JTextField input;
 	private Colorbtns btns;
-	
+
 	public void makeFrame() {
 		drawFrame();
 		drawImgSection();
@@ -78,7 +81,7 @@ public class MainDesign {
 		imgpanel.addMouseMotionListener(new MouseMotionListener() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				SendMessage.send.println("Position:"+e.getX()+","+e.getY());
+				SendMessage.send.println("Position:" + e.getX() + "," + e.getY());
 				SendMessage.send.flush();
 			}
 
@@ -121,42 +124,57 @@ public class MainDesign {
 			}
 		});
 	}
-	
+
 	private void drawUserList() {
 		userlist = new DefaultListModel();
-		Jlist= new JList(userlist);
-		Border listBorder = BorderFactory.createLineBorder(Color.BLACK,3);
+		Jlist = new JList(userlist);
+		Border listBorder = BorderFactory.createLineBorder(Color.BLACK, 3);
 		Jlist.setBorder(listBorder);
-		Jlist.setBounds(930,10,250,90);
+		Jlist.setBounds(930, 10, 250, 90);
 		frame.add(Jlist);
 	}
-	
+
 	private void drawChat() {
 		drawScreen();
 		drawInputText();
 	}
-	
+
 	private void drawScreen() {
 		screen = new JTextArea();
-		screen.setBounds(930,150,250,560);
-		Border screenborder = BorderFactory.createLineBorder(Color.BLACK,3);
+		screen.setBounds(930, 150, 250, 560);
+		Border screenborder = BorderFactory.createLineBorder(Color.BLACK, 3);
 		screen.setBorder(screenborder);
 		frame.add(screen);
 	}
-	
+
 	private void drawInputText() {
 		input = new JTextField();
-		input.setBounds(930,710,250,30);
-		Border inputborder = BorderFactory.createLineBorder(Color.BLACK,3);
+		input.setBounds(930, 710, 250, 30);
+		Border inputborder = BorderFactory.createLineBorder(Color.BLACK, 3);
 		input.setBorder(inputborder);
+		input.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					SendMessage.send.println("CHAT:" + input.getText());
+					SendMessage.send.flush();
+					input.setText("");
+				}
+			}
+
+		});	
 		frame.add(input);
 	}
-	
+
 	public Brush getBrush() {
 		return this.brush;
 	}
-	
+
 	public BufferedImage getImgbuff() {
-		return imgbuff;
+		return this.imgbuff;
+	}
+
+	public JTextArea getScreen() {
+		return this.screen;
 	}
 }

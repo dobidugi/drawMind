@@ -1,4 +1,4 @@
-package Client.Core.DrawSocket;
+package Client.Core.sSocket;
 
 import java.io.PrintWriter;
 import java.io.IOException;

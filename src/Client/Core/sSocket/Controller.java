@@ -1,10 +1,12 @@
-package Client.Core.DrawSocket;
+package Client.Core.sSocket;
+
+import javax.swing.JTextArea;
 
 import java.awt.image.BufferedImage;
 
 import java.net.Socket;
 
-import Client.Core.DrawSocket.SendMessage;
+import Client.Core.sSocket.SendMessage;
 import Client.Design.Brush;
 
 public class Controller {
@@ -16,6 +18,7 @@ public class Controller {
 	private ReceiveMessage ReceiveThread;
 	private Brush brush;
 	private BufferedImage imgbuff;
+	private JTextArea screen;
 	
 	public void start() {
 		if(ip!=null && port!=0) {
@@ -46,9 +49,14 @@ public class Controller {
 		SendThread.setSocket(Server);
 		ReceiveThread.setSocket(Server);
 		ReceiveThread.setBrush(brush);
+		ReceiveThread.setScreen(screen);
 		ReceiveThread.setImgbuff(imgbuff);
 		SendThread.start();
 		ReceiveThread.start();
+	}
+
+	public void setScreen(JTextArea screen) {
+		this.screen = screen;
 	}
 	
 	public void setBrush(Brush brush) {

@@ -1,17 +1,28 @@
 package Client.Core;
 
 import Client.Design.MainDesign;
-import Client.Core.DrawSocket.Controller;
+import Client.Design.initDesign;
+
+import Client.Core.sSocket.Controller;
 
 public class Main {
 	static public void main(String[] args) {
-		Controller drawSocket = new Controller();
-		drawSocket.setIP("127.0.0.1");
-		drawSocket.setPort(8888);
-		drawSocket.start();
+		String id=null,ip=null;
+		Controller Socket = new Controller();
 		MainDesign design = new MainDesign();
+		initDesign init = new initDesign();
+		init.makeFrame();
+		do {
+			id = init.getID();
+			ip = init.getIP();
+			System.out.println("");
+		}while(id==null && ip==null);
+		Socket.setIP(ip);
+		Socket.setPort(8888);
 		design.makeFrame();
-		drawSocket.setBrush(design.getBrush());
-		drawSocket.setImgbuff(design.getImgbuff());
+		Socket.start();
+		Socket.setScreen(design.getScreen());
+		Socket.setBrush(design.getBrush());
+		Socket.setImgbuff(design.getImgbuff());
 	}
 }

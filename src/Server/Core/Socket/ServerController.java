@@ -1,4 +1,4 @@
-package Server.Core.DrawSocket;
+package Server.Core.Socket;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import Server.Core.DrawSocket.ServerThread;
+import Server.Core.Socket.ServerThread;
 
 public class ServerController {
 	

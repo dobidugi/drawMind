@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import Client.Core.DrawSocket.SendMessage;
+import Client.Core.sSocket.SendMessage;
 import Client.Design.Brush;
 
 public class Blackbtn extends JButton{

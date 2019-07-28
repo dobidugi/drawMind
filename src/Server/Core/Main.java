@@ -1,11 +1,13 @@
 package Server.Core;
 
-import Server.Core.DrawSocket.ServerController;
+import Server.Core.ChatSocket.chatServerController;
+import Server.Core.Socket.ServerController;
 
 public class Main {
 	static public void main(String[] args) {
-		ServerController server = new ServerController();
-		server.setPort(8888);
-		server.start();
+		ServerController drawserver = new ServerController();
+		chatServerController chatserver = new chatServerController();
+		drawserver.setPort(8888);
+		drawserver.start();
 	}
 }

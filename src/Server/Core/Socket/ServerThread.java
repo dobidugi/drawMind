@@ -1,4 +1,4 @@
-package Server.Core.DrawSocket;
+package Server.Core.Socket;
 
 import java.net.Socket;
 
@@ -35,6 +35,7 @@ public class ServerThread extends Thread {
 		while(true) {
 			try {
 				msg = userin.readLine();
+				System.out.print(msg);
 				if(msg==null) {
 					Client.close();
 					break;
