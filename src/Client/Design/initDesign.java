@@ -1,11 +1,11 @@
 package Client.Design;
 
-import Client.Design.initDesigns.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+
+import Client.Design.initDesignComponents.*;
 
 public class initDesign {
 

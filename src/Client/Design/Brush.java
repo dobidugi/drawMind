@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JLabel;
 
-import Client.Core.sSocket.SendMessage;
+import Client.Core.Socket.SendMessage;
 
 public class Brush extends JLabel {
 

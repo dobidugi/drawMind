@@ -22,7 +22,7 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Client.Core.sSocket.SendMessage;
+import Client.Core.Socket.SendMessage;
 import Client.Design.Brush;
 import Client.Design.Colorbtns;
 

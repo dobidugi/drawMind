@@ -1,4 +1,4 @@
-package Client.Core.sSocket;
+package Client.Core.Socket;
 
 import java.io.PrintWriter;
 import java.io.IOException;

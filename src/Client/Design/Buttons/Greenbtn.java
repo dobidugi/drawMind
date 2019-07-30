@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import Client.Core.sSocket.SendMessage;
+import Client.Core.Socket.SendMessage;
 import Client.Design.Brush;
 
 public class Greenbtn extends JButton {

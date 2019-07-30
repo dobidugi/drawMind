@@ -1,9 +1,8 @@
 package Client.Core;
 
+import Client.Core.Socket.Controller;
 import Client.Design.MainDesign;
 import Client.Design.initDesign;
-
-import Client.Core.sSocket.Controller;
 
 public class Main {
 	static public void main(String[] args) {

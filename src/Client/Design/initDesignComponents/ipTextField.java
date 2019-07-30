@@ -1,4 +1,4 @@
-package Client.Design.initDesigns;
+package Client.Design.initDesignComponents;
 
 import javax.swing.JTextField;
 

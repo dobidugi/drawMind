@@ -1,4 +1,4 @@
-package Client.Core.sSocket;
+package Client.Core.Socket;
 
 import javax.swing.JTextArea;
 
@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 import java.net.Socket;
 
-import Client.Core.sSocket.SendMessage;
+import Client.Core.Socket.SendMessage;
 import Client.Design.Brush;
 
 public class Controller {

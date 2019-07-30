@@ -2,10 +2,16 @@ package Server.Core;
 
 import Server.Core.Socket.ServerController;
 
+import Server.Design.MainDesign;
+
 public class Main {
 	static public void main(String[] args) {
-		ServerController drawserver = new ServerController();
-		drawserver.setPort(8888);
-		drawserver.start();
+		ServerController server = new ServerController();
+		MainDesign design = new MainDesign();
+		design.makeFrame();
+		server.setJoinField(design.getJoinField());
+		server.setScreen(design.getScreen());
+		server.setPort(8888);
+		server.start();
 	}
 }
