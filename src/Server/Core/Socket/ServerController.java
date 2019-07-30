@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import java.util.ArrayList;
-
+import Server.Core.Game;
 import Server.Core.User;
 
 import Server.Core.Socket.ServerThread;
@@ -26,6 +26,8 @@ public class ServerController {
 	private JTextArea screen;
 	private JTextField join;
 	private JButton startbtn;
+	private Game game;
+	private String answer;
 
 	public void start() {
 		if (port != 0) {
@@ -94,11 +96,22 @@ public class ServerController {
 	}
 	
 	private void gamestart() {
+		game = new Game();
+		game.start();
 		screen.append("[SERVER] 게임을 시작하겠습니다.\n");
 		screen.setCaretPosition(screen.getDocument().getLength());
 		for (int i = 0; i < List.size(); i++) {
 			List.get(i).sendMessage("CHAT:[SERVER] " + "게임을 시작하겠습니다.");
 			List.get(i).sendMessage("SET:FALSE");
+			List.get(i).sendMessage("MODE:CLEAR");
+		}
+		int index = 0;
+		while(game.hasMoreAnswer()) {
+			answer = game.getAnswer();
+			List.get(index).sendMessage("SET:TRUE");
+			List.get(index).sendMessage("CHAT:[알림] " + "당신차례입니다.");
+			List.get(index).sendMessage("CHAT:[알림] " + "정답 : " +  this.answer);
+			List.get(index).sendMessage("CHAT:[알림] " + "정답을 잘 설명해보세요!!!");
 		}
 	}
 	

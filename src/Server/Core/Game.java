@@ -31,12 +31,11 @@ public class Game {
 		}
 	}
 
-	public boolean mixAnswer() {
+	public boolean hasMoreAnswer() {
 		if (answerList.size() != 0) {
 			int index = (int) (Math.random() * answerList.size());
 			answer = answerList.get(index);
 			answerList.remove(index);
-			
 			return true;
 		}
 		else return false;
