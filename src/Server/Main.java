@@ -1,4 +1,4 @@
-package Server.Core;
+package Server;
 
 import Server.Core.Socket.ServerController;
 

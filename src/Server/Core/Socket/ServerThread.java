@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import Server.Core.User;
 
 public class ServerThread extends Thread {
-	
+
 	private User user;
 	private Socket Client;
 	private BufferedReader userin;
@@ -21,7 +21,7 @@ public class ServerThread extends Thread {
 	private String ID;
 	private JTextArea screen;
 	private JTextField join;
-	
+
 	public void run() {
 		super.run();
 		setClient();
@@ -29,82 +29,88 @@ public class ServerThread extends Thread {
 		joinchat();
 		waitMsg();
 	}
-	
+
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	private void makeUserInBuffer() {
 		try {
 			userin = new BufferedReader(new InputStreamReader(Client.getInputStream()));
-		}	catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void waitMsg() {
-		while(true) {
+		while (true) {
 			try {
 				msg = userin.readLine();
-				if(msg==null) {
-					msg ="CHAT:"+ID+" out the room.";
+				if (msg == null) {
 					allUserSendMsg();
+					msg = "CHAT:" + ID + " out the room.";
 					Client.close();
 					ServerController.List.remove(user);
 					JoinFieldUpdate();
 					break;
 				}
-				String[] pars = msg.split(":");
-				if(pars[0].equals("CHAT")) {
-					msg = "CHAT:"+ "["+ID+"] "+pars[1];
+				if (msg.contains("CHAT:")) {
+					msg+=" "; // 아무것도 입력하지않고 엔터눌렀을시 멈춤방지
+					String[] pars = msg.split(":");
+					if (pars[0].equals("CHAT")) {
+						pars[1]+=" ";
+						msg = "CHAT:" + "[" + ID + "] " + pars[1];
+					}
 				}
-				
 				allUserSendMsg();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
+
 	private void joinchat() {
 		try {
 			ID = userin.readLine();
 			user.setUserID(ID);
 			JoinFieldUpdate();
-			screen.append(ID+" join the room\n");
-		} catch(IOException e) {
-			
+			screen.append(ID + " join the room\n");
+		} catch (IOException e) {
+
 		}
-		for(int i=0;i<ServerController.List.size();i++){
-			ServerController.List.get(i).sendMessage("JOIN:"+ID);
+		for (int i = 0; i < ServerController.List.size(); i++) {
+			ServerController.List.get(i).sendMessage("JOIN:" + ID);
 		}
 	}
+
 	private void allUserSendMsg() {
-		for(int i=0;i<ServerController.List.size();i++){
+		for (int i = 0; i < ServerController.List.size(); i++) {
 			ServerController.List.get(i).sendMessage(msg);
 		}
-		String pars[] = msg.split(":");
-		screen.append(pars[1]+"\n");
+		if (msg.contains("CHAT:")) {
+			String pars[] = msg.split(":");
+			screen.append(pars[1] + "\n");
+			screen.setCaretPosition(screen.getDocument().getLength());
+		}
 	}
-	
-	
+
 	private void JoinFieldUpdate() {
 		String str = new String();
 		str = "접속유저 : ";
-		for(int i=0;i<ServerController.List.size();i++) {
-			str+= ServerController.List.get(i).getUserID()+" ";
+		for (int i = 0; i < ServerController.List.size(); i++) {
+			str += ServerController.List.get(i).getUserID() + " ";
 		}
-		join.setText(str);;
+		join.setText(str);
 	}
-	
+
 	private void setClient() {
 		this.Client = user.getClient();
 	}
-	
+
 	public void setScreen(JTextArea screen) {
 		this.screen = screen;
 	}
-	
+
 	public void setJoinField(JTextField join) {
 		this.join = join;
 	}

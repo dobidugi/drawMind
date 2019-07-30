@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -141,10 +142,12 @@ public class MainDesign {
 
 	private void drawScreen() {
 		screen = new JTextArea();
-		screen.setBounds(930, 150, 250, 560);
+		JScrollPane scroll = new JScrollPane(screen);
+		scroll.setBounds(930, 150, 250, 560);
 		Border screenborder = BorderFactory.createLineBorder(Color.BLACK, 3);
 		screen.setBorder(screenborder);
-		frame.add(screen);
+		screen.setCaretPosition(screen.getDocument().getLength());
+		frame.add(scroll);
 	}
 
 	private void drawInputText() {

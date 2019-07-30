@@ -1,6 +1,12 @@
 package Server.Design;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JScrollPane;
 import javax.swing.JFrame;
+
+import Server.Core.Socket.ServerController;
 
 import Server.Design.MainDesignComponents.*;
 
@@ -11,6 +17,7 @@ public class MainDesign {
 	private ChatScreen screen;
 	private JoinUserField joinfield;
 	private ChatInputTextField inputfield;
+	private JScrollPane scroll;
 	
 	public void makeFrame() {
 		drawFrame();
@@ -48,12 +55,29 @@ public class MainDesign {
 	
 	private void drawScreen() {
 		screen = new ChatScreen();
-		frame.add(screen);
+		scroll = new JScrollPane(screen, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scroll.setBounds(10,110,480,250);
+		screen.setCaretPosition(screen.getDocument().getLength());
+		frame.add(scroll);
 	}
 	
 	private void drawInputField() {
 		inputfield = new ChatInputTextField();
 		frame.add(inputfield);
+		inputfield.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					screen.append("[SERVER] "+inputfield.getText()+"\n");
+					screen.setCaretPosition(screen.getDocument().getLength());
+					for(int i=0;i<ServerController.List.size();i++) {
+						ServerController.List.get(i).sendMessage("CHAT:[SERVER] "+inputfield.getText());
+					}
+					inputfield.setText("");
+				}
+			}
+
+		});	
 	}
 	
 	public ChatScreen getScreen() {

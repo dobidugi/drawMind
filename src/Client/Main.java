@@ -1,4 +1,4 @@
-package Client.Core;
+package Client;
 
 import Client.Core.Socket.Controller;
 import Client.Design.MainDesign;
