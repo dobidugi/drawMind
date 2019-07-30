@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import Client.Core.GameController;
 import Client.Core.Socket.SendMessage;
 import Client.Design.Brush;
 
@@ -18,9 +19,11 @@ public class Blackbtn extends JButton{
 	private void makeEvent() {
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SendMessage.send.println("Color:BLACK");
-				SendMessage.send.flush();
-				brush.setColor(Color.BLACK);
+				if(GameController.turnflag==true) {
+					SendMessage.send.println("Color:BLACK");
+					SendMessage.send.flush();
+					brush.setColor(Color.BLACK);
+				}
 			}
 		});
 	}

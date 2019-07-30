@@ -1,5 +1,6 @@
 package Client.Core.Socket;
 
+import Client.Core.GameController;
 import Client.Design.Brush;
 
 import java.net.Socket;
@@ -68,17 +69,27 @@ public class ReceiveMessage extends Thread {
 							brush.setColor(Color.YELLOW);
 						else if (pars[1].equals("WHITE"))
 							brush.setColor(Color.WHITE);
-					} else if (pars[0].equals("CHAT")) {
+					} 
+					else if (pars[0].equals("CHAT")) {
 						screen.append(pars[1] + "\n");
 						screen.setCaretPosition(screen.getDocument().getLength());
-					} else if (pars[0].equals("JOIN")) {
+					} 
+					else if (pars[0].equals("JOIN")) {
 						screen.append(pars[1] + " join the room.\n");
 						screen.setCaretPosition(screen.getDocument().getLength());
-					} else if (pars[0].equals("MODE")) {
+					} 
+					else if (pars[0].equals("MODE")) {
 						if (pars[1].equals("CLEAR"))
 							ClearScreen();
 					}
-
+					else if (pars[0].equals("SET")) {
+						if (pars[1].equals("FALSE")) {
+							GameController.turnflag = false;
+						}
+						else if(pars[1].equals("TRUE")) {
+							GameController.turnflag = true;
+						}
+					}
 				}
 			} catch (IOException e) {
 

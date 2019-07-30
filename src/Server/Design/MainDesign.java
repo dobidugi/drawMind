@@ -87,4 +87,8 @@ public class MainDesign {
 	public JoinUserField getJoinField() {
 		return this.joinfield;
 	}
+	
+	public Startbtn getButton() {
+		return this.startbtn;
+	}
 }

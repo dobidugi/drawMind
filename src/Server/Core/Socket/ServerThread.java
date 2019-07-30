@@ -5,7 +5,6 @@ import java.net.Socket;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.IOException;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -55,10 +54,10 @@ public class ServerThread extends Thread {
 					break;
 				}
 				if (msg.contains("CHAT:")) {
-					msg+=" "; // 아무것도 입력하지않고 엔터눌렀을시 멈춤방지
+					msg += " "; // 아무것도 입력하지않고 엔터눌렀을시 멈춤방지
 					String[] pars = msg.split(":");
 					if (pars[0].equals("CHAT")) {
-						pars[1]+=" ";
+						pars[1] += " ";
 						msg = "CHAT:" + "[" + ID + "] " + pars[1];
 					}
 				}

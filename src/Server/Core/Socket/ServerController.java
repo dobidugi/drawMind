@@ -2,9 +2,9 @@ package Server.Core.Socket;
 
 import java.net.ServerSocket;
 import java.net.Socket;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import java.util.ArrayList;
 
@@ -13,10 +13,11 @@ import Server.Core.User;
 import Server.Core.Socket.ServerThread;
 
 import javax.swing.JTextField;
+import javax.swing.JButton;
 import javax.swing.JTextArea;
 
 public class ServerController {
-	
+
 	private int port = 0;
 	private ServerSocket Server;
 	private Socket Client;
@@ -24,12 +25,14 @@ public class ServerController {
 	public static ArrayList<User> List;
 	private JTextArea screen;
 	private JTextField join;
-	
+	private JButton startbtn;
+
 	public void start() {
 		if (port != 0) {
 			List = new ArrayList<User>();
 			makeServerSocket();
 			makeClientSocket();
+			StartEvent();
 			acceptClient();
 		} else
 			System.out.println("set server port");
@@ -69,12 +72,45 @@ public class ServerController {
 			}
 		}
 	}
+
+	private void StartEvent() {
+		startbtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (checkStart()) {
+					screen.append("[에러] 참여자가 2명 이상일시 시작가능합니다.\n");
+					screen.setCaretPosition(screen.getDocument().getLength());
+				} 
+				else {
+					gamestart();
+				}
+			}
+		});
+	}
+
+	private boolean	checkStart() {
+		if(List.size()>=1) return false;
+		else return true;
+	}
+	
+	private void gamestart() {
+		screen.append("[SERVER] 게임을 시작하겠습니다.\n");
+		screen.setCaretPosition(screen.getDocument().getLength());
+		for (int i = 0; i < List.size(); i++) {
+			List.get(i).sendMessage("CHAT:[SERVER] " + "게임을 시작하겠습니다.");
+			List.get(i).sendMessage("SET:FALSE");
+		}
+	}
 	
 	public void setScreen(JTextArea screen) {
 		this.screen = screen;
 	}
-	
+
 	public void setJoinField(JTextField join) {
 		this.join = join;
+	}
+
+	public void setStartButton(JButton startbtn) {
+		this.startbtn = startbtn;
 	}
 }

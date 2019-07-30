@@ -6,7 +6,7 @@ import Client.Design.initDesign;
 
 public class Main {
 	static public void main(String[] args) {
-		String id=null,ip=null;
+		String id=null,ip=null;	
 		Controller Socket = new Controller();
 		MainDesign design = new MainDesign();
 		initDesign init = new initDesign();

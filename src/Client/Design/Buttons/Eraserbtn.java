@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import Client.Core.GameController;
 import Client.Core.Socket.SendMessage;
 import Client.Design.Brush;
 
@@ -21,9 +22,11 @@ public class Eraserbtn extends JButton {
 	private void makeEvent() {
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SendMessage.send.println("Color:WHITE");
-				SendMessage.send.flush();
-				brush.setColor(Color.WHITE);
+				if(GameController.turnflag==true) {
+					SendMessage.send.println("Color:WHITE");
+					SendMessage.send.flush();
+					brush.setColor(Color.WHITE);
+				}
 			}
 		});
 	}

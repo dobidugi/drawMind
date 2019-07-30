@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import Client.Core.GameController;
 import Client.Core.Socket.SendMessage;
 import Client.Design.Brush;
 
@@ -20,9 +21,11 @@ public class Greenbtn extends JButton {
 	private void makeEvent() {
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SendMessage.send.println("Color:GREEN");
-				SendMessage.send.flush();
-				brush.setColor(Color.GREEN);
+				if(GameController.turnflag==true) {
+					SendMessage.send.println("Color:GREEN");
+					SendMessage.send.flush();
+					brush.setColor(Color.GREEN);
+				}
 			}
 		});
 	}

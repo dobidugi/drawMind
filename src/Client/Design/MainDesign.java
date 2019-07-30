@@ -23,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import Client.Core.GameController;
 import Client.Core.Socket.SendMessage;
 import Client.Design.Brush;
 import Client.Design.Colorbtns;
@@ -82,8 +83,10 @@ public class MainDesign {
 		imgpanel.addMouseMotionListener(new MouseMotionListener() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				SendMessage.send.println("Position:" + e.getX() + "," + e.getY());
-				SendMessage.send.flush();
+				if(GameController.turnflag==true) {
+					SendMessage.send.println("Position:" + e.getX() + "," + e.getY());
+					SendMessage.send.flush();
+				}
 			}
 
 			public void mouseMoved(MouseEvent e) {
@@ -120,8 +123,10 @@ public class MainDesign {
 	private void ClearButtonEvent() {
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SendMessage.send.println("MODE:CLEAR");
-				SendMessage.send.flush();
+				if(GameController.turnflag==true) {
+					SendMessage.send.println("MODE:CLEAR");
+					SendMessage.send.flush();
+				}
 			}
 		});
 	}
