@@ -1,9 +1,6 @@
-package Server.Core;
-
-import Server.Core.FileRead;
+package Server.Core.Game;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Game {
 

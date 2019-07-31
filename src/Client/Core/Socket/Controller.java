@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.net.Socket;
 
 import Client.Core.Socket.SendMessage;
-import Client.Design.Brush;
+import Client.Design.MainDesignComponents.Brush;
 
 public class Controller {
 	

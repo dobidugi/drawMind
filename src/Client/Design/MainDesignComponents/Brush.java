@@ -1,4 +1,4 @@
-package Client.Design;
+package Client.Design.MainDesignComponents;
 
 import java.awt.Color;
 import java.awt.Graphics;

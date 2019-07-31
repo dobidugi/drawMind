@@ -1,4 +1,4 @@
-package Client.Design.Buttons;
+package Client.Design.MainDesignComponents;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -8,21 +8,23 @@ import javax.swing.JButton;
 
 import Client.Core.GameController;
 import Client.Core.Socket.SendMessage;
-import Client.Design.Brush;
 
-public class Blackbtn extends JButton{
+public class Eraserbtn extends JButton {
+	
 	private Brush brush;
-	public Blackbtn(){
-		setBounds(10, 715, 120, 50);
-		setBackground(Color.BLACK);
+	
+	public Eraserbtn(){
+		super("지우개");
+		setBounds(660, 715, 120, 50);
+		setBackground(Color.WHITE);
 	}
 	private void makeEvent() {
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(GameController.turnflag==true) {
-					SendMessage.send.println("Color:BLACK");
+					SendMessage.send.println("Color:WHITE");
 					SendMessage.send.flush();
-					brush.setColor(Color.BLACK);
+					brush.setColor(Color.WHITE);
 				}
 			}
 		});

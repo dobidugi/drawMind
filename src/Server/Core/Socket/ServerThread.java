@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Server.Core.User;
+import Server.Core.Game.GameController;
 
 public class ServerThread extends Thread {
 
@@ -46,8 +47,8 @@ public class ServerThread extends Thread {
 			try {
 				msg = userin.readLine();
 				if (msg == null) {
-					allUserSendMsg();
 					msg = "CHAT:" + ID + " out the room.";
+					allUserSendMsg();
 					Client.close();
 					ServerController.List.remove(user);
 					JoinFieldUpdate();
@@ -56,6 +57,11 @@ public class ServerThread extends Thread {
 				if (msg.contains("CHAT:")) {
 					msg += " "; // 아무것도 입력하지않고 엔터눌렀을시 멈춤방지
 					String[] pars = msg.split(":");
+					System.out.println(pars[1]);
+					if(pars[1].equals(GameController.answer+" ") && GameController.answerflag == false && (!(this.ID).equals(GameController.ID))) {
+						GameController.answerflag = true;
+						GameController.rightAnswer(ID);
+					}
 					if (pars[0].equals("CHAT")) {
 						pars[1] += " ";
 						msg = "CHAT:" + "[" + ID + "] " + pars[1];

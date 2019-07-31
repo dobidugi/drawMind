@@ -1,4 +1,4 @@
-package Client.Design.Buttons;
+package Client.Design.MainDesignComponents;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -8,23 +8,20 @@ import javax.swing.JButton;
 
 import Client.Core.GameController;
 import Client.Core.Socket.SendMessage;
-import Client.Design.Brush;
 
-public class Greenbtn extends JButton {
-	
+public class Redbtn extends JButton{
 	private Brush brush;
-	
-	public Greenbtn(){
-		setBounds(400, 715, 120, 50);
-		setBackground(Color.GREEN);
+	public Redbtn(){
+		setBounds(140, 715, 120, 50);
+		setBackground(Color.RED);
 	}
 	private void makeEvent() {
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(GameController.turnflag==true) {
-					SendMessage.send.println("Color:GREEN");
+					SendMessage.send.println("Color:RED");
 					SendMessage.send.flush();
-					brush.setColor(Color.GREEN);
+					brush.setColor(Color.RED);
 				}
 			}
 		});
@@ -34,5 +31,5 @@ public class Greenbtn extends JButton {
 		this.brush = brush;
 		makeEvent();
 	}
-}
 
+}

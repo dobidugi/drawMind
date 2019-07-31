@@ -2,7 +2,6 @@ package Client.Design;
 
 import java.awt.image.BufferedImage;
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -25,8 +24,8 @@ import javax.swing.JTextField;
 
 import Client.Core.GameController;
 import Client.Core.Socket.SendMessage;
-import Client.Design.Brush;
-import Client.Design.Colorbtns;
+import Client.Design.MainDesignComponents.Brush;
+import Client.Design.MainDesignComponents.Colorbtns;
 
 public class MainDesign {
 
@@ -37,8 +36,7 @@ public class MainDesign {
 	private JLabel imgpanel;
 	private Brush brush;
 	private JButton clearbtn;
-	private JList Jlist;
-	private DefaultListModel userlist;
+	private JTextField answerfield;
 	private JTextArea screen;
 	private JTextField input;
 	private Colorbtns btns;
@@ -49,7 +47,7 @@ public class MainDesign {
 		makeBrush();
 		makeMouseEvent();
 		drawButtons();
-		drawUserList();
+		drawAnswerField();
 		drawChat();
 		frame.repaint();
 	}
@@ -131,13 +129,12 @@ public class MainDesign {
 		});
 	}
 
-	private void drawUserList() {
-		userlist = new DefaultListModel();
-		Jlist = new JList(userlist);
+	private void drawAnswerField() {
+		answerfield = new JTextField();
 		Border listBorder = BorderFactory.createLineBorder(Color.BLACK, 3);
-		Jlist.setBorder(listBorder);
-		Jlist.setBounds(930, 10, 250, 90);
-		frame.add(Jlist);
+		answerfield.setBorder(listBorder);
+		answerfield.setBounds(930, 10, 250, 90);
+		frame.add(answerfield);
 	}
 
 	private void drawChat() {
@@ -150,6 +147,9 @@ public class MainDesign {
 		JScrollPane scroll = new JScrollPane(screen);
 		scroll.setBounds(930, 150, 250, 560);
 		Border screenborder = BorderFactory.createLineBorder(Color.BLACK, 3);
+		screen.setEnabled(false);
+		screen.setDisabledTextColor(Color.BLACK);
+		screen.setFont(screen.getFont().deriveFont(16f));
 		screen.setBorder(screenborder);
 		screen.setCaretPosition(screen.getDocument().getLength());
 		frame.add(scroll);

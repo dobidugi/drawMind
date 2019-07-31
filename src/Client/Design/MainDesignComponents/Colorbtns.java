@@ -1,12 +1,4 @@
-package Client.Design;
-
-import Client.Design.Buttons.Blackbtn;
-import Client.Design.Buttons.Redbtn;
-import Client.Design.Buttons.Bluebtn;
-import Client.Design.Buttons.Greenbtn;
-import Client.Design.Buttons.Yellowbtn;
-import Client.Design.Buttons.Eraserbtn;
-import Client.Design.Brush;
+package Client.Design.MainDesignComponents;
 
 public class Colorbtns {
 	

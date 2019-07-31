@@ -1,4 +1,4 @@
-package Server.Core;
+package Server.Core.Game;
 
 import java.io.BufferedReader;
 import java.io.File;

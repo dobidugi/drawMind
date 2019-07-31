@@ -1,7 +1,7 @@
 package Client.Core.Socket;
 
 import Client.Core.GameController;
-import Client.Design.Brush;
+import Client.Design.MainDesignComponents.Brush;
 
 import java.net.Socket;
 
