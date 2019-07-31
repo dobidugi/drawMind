@@ -4,7 +4,7 @@ import javax.swing.JButton;
 
 public class Startbtn extends JButton {
 	public Startbtn() {
-		super("ê²Œì„ì‹œì‘");
+		super("°ÔÀÓ½ÃÀÛ");
 		setBounds(10,10,480,50);
 	}
 }

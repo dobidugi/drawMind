@@ -7,7 +7,7 @@ import javax.swing.JTextField;
 
 public class JoinUserField extends JTextField {
 	public JoinUserField() {
-		super("ì ‘ì†ìœ ì € : ");
+		super("Á¢¼ÓÀ¯Àú : ");
 		setBounds(10,70,480,30);
 		setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 		this.setDisabledTextColor(Color.BLACK);

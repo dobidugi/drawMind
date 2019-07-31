@@ -21,6 +21,7 @@ public class Main {
 		Socket.setId(id);
 		design.makeFrame();
 		Socket.start();		
+		Socket.setAnswerField(design.getAnswerField());
 		Socket.setScreen(design.getScreen());
 		Socket.setBrush(design.getBrush());
 		Socket.setImgbuff(design.getImgbuff());

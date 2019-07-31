@@ -24,11 +24,12 @@ public class GameloopThread extends Thread {
 			GameController.answerflag = false;
 			GameController.ID = ServerController.List.get(index).getUserID();
 			GameController.allUserMsg("CHAT:[알림] " + GameController.ID +"님의 차례입니다.");
-			screen.append("CHAT:[알림] " + GameController.ID +"님의 차례입니다.\n");
+			screen.append("[알림] " + GameController.ID +"님의 차례입니다.\n");
 			ServerController.List.get(index).sendMessage("SET:TRUE");
 			ServerController.List.get(index).sendMessage("CHAT:[알림] " + "당신차례입니다.");
-			ServerController.List.get(index).sendMessage("CHAT:[알림] " + "정답은 " +  answer +" 입니다.");
+			ServerController.List.get(index).sendMessage("CHAT:[알림] " + "정답은  " +  answer +" 입니다.");
 			ServerController.List.get(index).sendMessage("CHAT:[알림] " + "정답을 잘 설명해보세요!!!");
+			ServerController.List.get(index).sendMessage("ANSWER:"+answer);
 			while(true) {
 				if(GameController.answerflag == true) break;
 				else {
@@ -39,6 +40,7 @@ public class GameloopThread extends Thread {
 					}
 				}
 			}
+			ServerController.List.get(index).sendMessage("ANSWER:"+" ");
 			GameController.allUserPermissionFalse();
 			++index;
 			if(index == ServerController.List.size()) {

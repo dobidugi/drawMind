@@ -46,14 +46,6 @@ public class ServerThread extends Thread {
 		while (true) {
 			try {
 				msg = userin.readLine();
-				if (msg == null) {
-					msg = "CHAT:" + ID + " out the room.";
-					allUserSendMsg();
-					Client.close();
-					ServerController.List.remove(user);
-					JoinFieldUpdate();
-					break;
-				}
 				if (msg.contains("CHAT:")) {
 					msg += " "; // 아무것도 입력하지않고 엔터눌렀을시 멈춤방지
 					String[] pars = msg.split(":");
@@ -69,7 +61,12 @@ public class ServerThread extends Thread {
 				}
 				allUserSendMsg();
 			} catch (IOException e) {
-				e.printStackTrace();
+				msg = "CHAT:" + ID + " out the room.";
+				allUserSendMsg();
+				//Client.close();
+				ServerController.List.remove(user);
+				JoinFieldUpdate();
+				break;
 			}
 		}
 	}
@@ -98,10 +95,10 @@ public class ServerThread extends Thread {
 			screen.setCaretPosition(screen.getDocument().getLength());
 		}
 	}
-
+	
 	private void JoinFieldUpdate() {
 		String str = new String();
-		str = "접속유저 : ";
+		str = "접속유저  : ";
 		for (int i = 0; i < ServerController.List.size(); i++) {
 			str += ServerController.List.get(i).getUserID() + " ";
 		}

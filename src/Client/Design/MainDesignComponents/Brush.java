@@ -19,7 +19,7 @@ public class Brush extends JLabel {
 	public void paint(Graphics g) {
 		if(flag==true) {
 			g.setColor(color);
-			g.fillOval(x - 10, y - 10, 10, 20);
+			g.fillOval(x - 2, y - 2, 10, 20);
 		}
 		else if(flag==false) {
 			g.setColor(Color.WHITE);

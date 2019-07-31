@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class FileRead {
 	
 	private File file;
-	private final String dir="./answer.txt";
+	private final String dir="src"+File.separator+"Server"+File.separator+"Core"+File.separator+"Game"+File.separator+"answer.txt";
 	private ArrayList<String> list;
 	
 	public void read() {
@@ -34,7 +34,8 @@ public class FileRead {
 			}
 			bufReader.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("file nou found");
+			System.out.println("Working Directory = " +
+		              System.getProperty("user.dir"));
 		} catch (IOException e) {
 			System.out.println(e);
 		}

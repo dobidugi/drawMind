@@ -82,7 +82,7 @@ public class ServerController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (checkStart()) {
-					screen.append("[에러] 참여자가 2명 이상일시 시작가능합니다.\n");
+					screen.append("[에러] 참여자가 2명 이상일시 시작 가능합니다.\n");
 					screen.setCaretPosition(screen.getDocument().getLength());
 				} 
 				else {
@@ -93,7 +93,7 @@ public class ServerController {
 	}
 
 	private boolean	checkStart() {
-		if(List.size()>=1) return false;
+		if(List.size()>1) return false;
 		else return true;
 	}
 	
@@ -101,7 +101,7 @@ public class ServerController {
 		screen.append("[SERVER] 게임을 시작하겠습니다.\n");
 		screen.setCaretPosition(screen.getDocument().getLength());
 		GameloopThread game = new GameloopThread();
-		game.setScreen();
+		game.setScreen(screen);
 		game.start();
 	}
 	

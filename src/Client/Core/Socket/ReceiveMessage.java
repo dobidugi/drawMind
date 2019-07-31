@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class ReceiveMessage extends Thread {
 
@@ -23,7 +24,8 @@ public class ReceiveMessage extends Thread {
 	private BufferedImage imgbuff;
 	private int x, y;
 	private JTextArea screen;
-
+	private JTextField answerfield;
+	
 	public void run() {
 		super.run();
 		makeMsgBuff();
@@ -90,6 +92,9 @@ public class ReceiveMessage extends Thread {
 							GameController.turnflag = true;
 						}
 					}
+					else if(pars[0].equals("ANSWER")) {
+						answerfield.setText(pars[1]);
+					}
 				}
 			} catch (IOException e) {
 
@@ -113,5 +118,9 @@ public class ReceiveMessage extends Thread {
 
 	public void setScreen(JTextArea screen) {
 		this.screen = screen;
+	}
+	
+	public void setAnswerField(JTextField answerfield) {
+		this.answerfield = answerfield;
 	}
 }

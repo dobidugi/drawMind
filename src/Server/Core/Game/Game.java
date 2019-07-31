@@ -37,7 +37,7 @@ public class Game {
 		}
 		else return false;
 	}
-	
+
 	public String getAnswer() {
 		return this.answer;
 	}

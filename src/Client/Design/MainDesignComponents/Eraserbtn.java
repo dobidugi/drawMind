@@ -14,8 +14,9 @@ public class Eraserbtn extends JButton {
 	private Brush brush;
 	
 	public Eraserbtn(){
-		super("ì§€ìš°ê°œ");
-		setBounds(660, 715, 120, 50);
+		super("Áö¿ì°³");
+		setBounds(360, 415, 60, 40);
+		setFont(getFont().deriveFont(7f));
 		setBackground(Color.WHITE);
 	}
 	private void makeEvent() {

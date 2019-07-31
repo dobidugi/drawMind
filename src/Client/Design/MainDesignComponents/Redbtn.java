@@ -12,7 +12,7 @@ import Client.Core.Socket.SendMessage;
 public class Redbtn extends JButton{
 	private Brush brush;
 	public Redbtn(){
-		setBounds(140, 715, 120, 50);
+		setBounds(80, 415, 60, 40);
 		setBackground(Color.RED);
 	}
 	private void makeEvent() {

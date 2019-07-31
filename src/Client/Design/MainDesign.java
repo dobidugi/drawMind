@@ -29,8 +29,8 @@ import Client.Design.MainDesignComponents.Colorbtns;
 
 public class MainDesign {
 
-	private final int panelWidth = 900; // 그림판 너비
-	private final int panelHeight = 700; // 그림판 높이
+	private final int panelWidth = 480; // 그림판 너비
+	private final int panelHeight = 400; // 그림판 높이
 	private JFrame frame;
 	private BufferedImage imgbuff;
 	private JLabel imgpanel;
@@ -40,7 +40,6 @@ public class MainDesign {
 	private JTextArea screen;
 	private JTextField input;
 	private Colorbtns btns;
-
 	public void makeFrame() {
 		drawFrame();
 		drawImgSection();
@@ -54,7 +53,7 @@ public class MainDesign {
 
 	private void drawFrame() {
 		frame = new JFrame();
-		frame.setSize(1200, 800);
+		frame.setSize(700, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(null);
@@ -112,9 +111,9 @@ public class MainDesign {
 	}
 
 	private void drawClearButton() {
-		clearbtn = new JButton("전체 지우기");
+		clearbtn = new JButton("X");
 		clearbtn.setBackground(Color.WHITE);
-		clearbtn.setBounds(790, 715, 120, 50);
+		clearbtn.setBounds(430, 415, 60, 40);
 		frame.add(clearbtn);
 	}
 
@@ -133,7 +132,10 @@ public class MainDesign {
 		answerfield = new JTextField();
 		Border listBorder = BorderFactory.createLineBorder(Color.BLACK, 3);
 		answerfield.setBorder(listBorder);
-		answerfield.setBounds(930, 10, 250, 90);
+		answerfield.enable(false);
+		answerfield.setDisabledTextColor(Color.BLACK);
+		answerfield.setHorizontalAlignment(JTextField.CENTER);
+		answerfield.setBounds(500, 10, 180, 60);
 		frame.add(answerfield);
 	}
 
@@ -145,11 +147,11 @@ public class MainDesign {
 	private void drawScreen() {
 		screen = new JTextArea();
 		JScrollPane scroll = new JScrollPane(screen);
-		scroll.setBounds(930, 150, 250, 560);
+		scroll.setBounds(500, 80, 180, 350);
 		Border screenborder = BorderFactory.createLineBorder(Color.BLACK, 3);
 		screen.setEnabled(false);
 		screen.setDisabledTextColor(Color.BLACK);
-		screen.setFont(screen.getFont().deriveFont(16f));
+		screen.setFont(screen.getFont().deriveFont(10));
 		screen.setBorder(screenborder);
 		screen.setCaretPosition(screen.getDocument().getLength());
 		frame.add(scroll);
@@ -157,7 +159,7 @@ public class MainDesign {
 
 	private void drawInputText() {
 		input = new JTextField();
-		input.setBounds(930, 710, 250, 30);
+		input.setBounds(500, 430, 180, 20);
 		Border inputborder = BorderFactory.createLineBorder(Color.BLACK, 3);
 		input.setBorder(inputborder);
 		input.addKeyListener(new KeyAdapter() {
@@ -184,5 +186,9 @@ public class MainDesign {
 
 	public JTextArea getScreen() {
 		return this.screen;
+	}
+	
+	public JTextField getAnswerField() {
+		return this.answerfield;
 	}
 }

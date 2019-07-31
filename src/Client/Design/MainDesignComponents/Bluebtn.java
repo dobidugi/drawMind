@@ -14,7 +14,7 @@ public class Bluebtn extends JButton {
 	private Brush brush;
 	
 	public Bluebtn(){
-		setBounds(270, 715, 120, 50);
+		setBounds(150, 415, 60, 40);
 		setBackground(Color.BLUE);
 	}
 	private void makeEvent() {

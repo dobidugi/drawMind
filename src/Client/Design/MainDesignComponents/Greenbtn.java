@@ -14,7 +14,7 @@ public class Greenbtn extends JButton {
 	private Brush brush;
 	
 	public Greenbtn(){
-		setBounds(400, 715, 120, 50);
+		setBounds(220, 415, 60, 40);
 		setBackground(Color.GREEN);
 	}
 	private void makeEvent() {

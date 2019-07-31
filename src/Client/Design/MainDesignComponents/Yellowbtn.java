@@ -14,7 +14,7 @@ public class Yellowbtn extends JButton {
 	private Brush brush;
 	
 	public Yellowbtn(){
-		setBounds(530, 715, 120, 50);
+		setBounds(290, 415, 60, 40);
 		setBackground(Color.YELLOW);
 	}
 	private void makeEvent() {

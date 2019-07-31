@@ -9,7 +9,7 @@ public class GameController {
 	static public String ID;
 	static public void firstStart() {
 		for (int i = 0; i < ServerController.List.size(); i++) {
-			ServerController.List.get(i).sendMessage("CHAT:[SERVER] " + "게임을 시작하겠습니다.");
+			ServerController.List.get(i).sendMessage("CHAT:[SERVER] " + "게임을 시작 하겠습니다.");
 			ServerController.List.get(i).sendMessage("SET:FALSE");
 			ServerController.List.get(i).sendMessage("MODE:CLEAR");
 			
@@ -27,7 +27,7 @@ public class GameController {
 		answerflag = true;
 		answer = "aaaaaaaaaaa";
 		for (int i = 0; i < ServerController.List.size(); i++) {
-			ServerController.List.get(i).sendMessage("CHAT:[알림] " + id +"님이 맞추셨습니다.");
+			ServerController.List.get(i).sendMessage("CHAT:[알림] " + id +" 님이 맞추셨습니다.");
 		}
 	}
 	

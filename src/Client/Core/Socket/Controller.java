@@ -1,6 +1,7 @@
 package Client.Core.Socket;
 
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import java.awt.image.BufferedImage;
 
@@ -20,6 +21,7 @@ public class Controller {
 	private BufferedImage imgbuff;
 	private JTextArea screen;
 	private String id="test";
+	private JTextField answerfield;
 	
 	public void start() {
 		if(ip!=null && port!=0) {
@@ -49,6 +51,7 @@ public class Controller {
 		ReceiveThread = new ReceiveMessage();
 		SendThread.setSocket(Server);
 		SendThread.setId(id);
+		ReceiveThread.setAnswerField(answerfield);
 		ReceiveThread.setSocket(Server);
 		ReceiveThread.setBrush(brush);
 		ReceiveThread.setScreen(screen);
@@ -72,5 +75,9 @@ public class Controller {
 	public void setImgbuff(BufferedImage imgbuff) {
 		this.imgbuff = imgbuff;
 		makeThread();
+	}
+	
+	public void setAnswerField(JTextField answerfield) {
+		this.answerfield = answerfield;
 	}
 }
