@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
-encoding//src/Client/Design/MainDesign.java=UTF-8
 encoding//src/Server/Core/Game/GameController.java=UTF-8
 encoding//src/Server/Core/Game/GameloopThread.java=UTF-8
 encoding//src/Server/Core/Socket/ServerController.java=UTF-8
 encoding//src/Server/Core/Socket/ServerThread.java=UTF-8
+encoding//src/Server/core/game/GameController.java=UTF-8
+encoding//src/Server/core/game/GameloopThread.java=UTF-8

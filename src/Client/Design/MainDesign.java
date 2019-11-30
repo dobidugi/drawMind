@@ -1,4 +1,4 @@
-package Client.Design;
+package Client.design;
 
 import java.awt.image.BufferedImage;
 import java.awt.Color;
@@ -22,10 +22,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import Client.Core.GameController;
-import Client.Core.Socket.SendMessage;
-import Client.Design.MainDesignComponents.Brush;
-import Client.Design.MainDesignComponents.Colorbtns;
+import Client.core.socket.SendMessage;
+import Client.core.GameController;
+import Client.design.maindesigncomponents.Brush;
+import Client.design.maindesigncomponents.Colorbtns;
 
 public class MainDesign {
 

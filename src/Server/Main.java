@@ -1,7 +1,7 @@
 package Server;
 
-import Server.Core.Socket.ServerController;
-import Server.Design.MainDesign;
+import Server.core.socket.ServerController;
+import Server.design.MainDesign;
 
 public class Main {
 	static public void main(String[] args) {
